@@ -23,6 +23,13 @@ module.exports = {
         loader: 'babel-loader',
         exclude: /node_modules/,
       },
+      {
+        resolve: {
+          alias: {
+            '@': path.resolve(__dirname, 'src'),
+          },
+        },
+      },
     ],
   },
 

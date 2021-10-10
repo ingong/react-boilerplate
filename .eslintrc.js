@@ -14,5 +14,6 @@ module.exports = {
   plugins: ['react'],
   rules: {
     'no-console': 'off',
+    'arrow-parens': 'as-needed',
   },
 };
