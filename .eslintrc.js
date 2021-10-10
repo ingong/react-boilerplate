@@ -13,7 +13,11 @@ module.exports = {
   },
   plugins: ['react'],
   rules: {
+    'no-unused-vars': ['error', { vars: 'all', args: 'after-used', ignoreRestSiblings: false }],
     'no-console': 'off',
-    'arrow-parens': 'as-needed',
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
+    'import/no-unresolved': 'off',
+    'import/extensions': ['off', 'never'],
   },
 };
