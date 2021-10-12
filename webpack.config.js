@@ -24,6 +24,14 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
+        test: /\.(scss|css)$/,
+        use: [
+          process.env.NODE_ENV === 'production' ? MiniCssExtractPlugin.loader : 'style-loader',
+          'css-loader',
+          'sass-loader',
+        ],
+      },
+      {
         resolve: {
           alias: {
             '@': path.resolve(__dirname, 'src'),
