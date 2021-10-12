@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   mode: 'development',
@@ -12,7 +13,7 @@ module.exports = {
 
   devServer: {
     host: 'localhost',
-    port: 3000,
+    port: 8080,
     historyApiFallback: true,
   },
 
@@ -30,6 +31,10 @@ module.exports = {
           'css-loader',
           'sass-loader',
         ],
+      },
+      {
+        test: /\.(png|jp(e)g|gif|svg)$/,
+        type: 'asset/resource',
       },
       {
         resolve: {
