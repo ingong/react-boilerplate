@@ -15,6 +15,7 @@
     "strict": true,
     "skipLibCheck": true,
     "noImplicitAny": false,
+    "allowJs": true,
 
     "baseUrl": ".",
     "paths": {
