@@ -1,14 +1,13 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   mode: 'development',
 
-  entry: './src/index',
+  entry: path.resolve(__dirname, './src/index'),
 
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
   },
 
   devServer: {
@@ -20,17 +19,9 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.(js|jsx|ts|tsx)$/,
         loader: 'babel-loader',
         exclude: /node_modules/,
-      },
-      {
-        test: /\.(scss|css)$/,
-        use: [
-          process.env.NODE_ENV === 'production' ? MiniCssExtractPlugin.loader : 'style-loader',
-          'css-loader',
-          'sass-loader',
-        ],
       },
       {
         test: /\.(png|jp(e)g|gif|svg)$/,
@@ -54,6 +45,13 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './public/index.html',
+      minify:
+        process.env.NODE_ENV === 'production'
+          ? {
+              collapseWhitespace: true,
+              removeComments: true,
+            }
+          : false,
     }),
   ],
 };
